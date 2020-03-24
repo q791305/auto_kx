@@ -8,8 +8,8 @@ chrome_options.add_argument("--no-sandbox")
 driver = webdriver.Chrome("/root/chromedriver", options=chrome_options)
 
 driver.get("https://eip.kx.com.tw/kxeip/") #先進入擎昊網頁
-driver.find_element_by_name("txtAccount").send_keys("eric.yang")
-driver.find_element_by_name("txtPassword").send_keys("KX#08564.")
+driver.find_element_by_name("txtAccount").send_keys("")
+driver.find_element_by_name("txtPassword").send_keys("")
 driver.find_element_by_id("btnLogin").click()
 
 driver.get("https://eip.kx.com.tw/KxEIP/Modules/Personal/PersonalWorkLog")
