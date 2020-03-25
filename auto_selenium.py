@@ -8,8 +8,8 @@ chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
 driver = webdriver.Chrome("/root/chromedriver", options=chrome_options)
 
-account=os.popen('cat /root/file1').read().replace("\n", "")
-key=os.popen('cat /root/file2').read().replace("\n", "")
+account=os.popen('cat /root/auto_python/.file1').read().replace("\n", "")
+key=os.popen('cat /root/auto_python/.file2').read().replace("\n", "")
 driver.get("https://eip.kx.com.tw/kxeip/") #先進入擎昊網頁
 driver.find_element_by_name("txtAccount").send_keys(account)
 driver.find_element_by_name("txtPassword").send_keys(key)
