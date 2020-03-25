@@ -5,7 +5,7 @@ read -p "Please input your password: " password
 echo -e "install start."
 echo -e "install start.."
 echo -e "install start..."
-cd ..
+
 sudo yum install epel-release -y
 sudo yum install python36 -y
 python3 -m ensurepip
