@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo -e "install start..."
 sudo yum install epel-release -y -q
 yum install figlet -y -q
 figlet -ck "made    by    Eric"
@@ -8,7 +9,7 @@ sleep 1
 read -p "Please input your account: " account
 read -p "Please input your password: " password
 
-echo -e "install start..."
+
 
 
 sudo yum install python36 -y
@@ -36,4 +37,4 @@ echo "0 18 * * 1-7 export DISPLAY=:0 && /usr/bin/python3 /root/auto_selenium.py"
 systemctl restart crond
 systemctl enable crond
 
-echo -e "complete"
+figlet -k "complete"
