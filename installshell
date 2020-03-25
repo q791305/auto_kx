@@ -12,6 +12,7 @@ sudo pip3 install selenium
 sudo yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -y
 wget https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
+mv ~/auto_kx/chromedriver ~/
 mv ~/auto_kx/auto_selenium.py ~/
 chmod 777 /root/chromedriver
 chmod 777 /root/auto_selenium.py
