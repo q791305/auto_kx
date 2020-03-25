@@ -6,7 +6,7 @@ import os
 chrome_options = Options()
 chrome_options.add_argument("--headless")
 chrome_options.add_argument("--no-sandbox")
-driver = webdriver.Chrome("/root/chromedriver", options=chrome_options)
+driver = webdriver.Chrome("/root/auto_python/chromedriver", options=chrome_options)
 
 account=os.popen('cat /root/auto_python/.file1').read().replace("\n", "")
 key=os.popen('cat /root/auto_python/.file2').read().replace("\n", "")
