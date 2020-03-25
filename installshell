@@ -78,6 +78,13 @@ echo ${validpwd} > /root/auto_python/.file2
 chmod 777 /root/auto_python/.file1
 chmod 777 /root/auto_python/.file2
 
+read -p "每天幾點打卡(0-23): " h
+if [ $h -ge 0 ] && [ $h -le 23 ]; then
+    echo "設置成功"
+else
+    exit 1
+fi
+
 sudo yum install python36 -y
 python3 -m ensurepip
 sudo pip3 install --upgrade pip
@@ -92,7 +99,7 @@ chmod 777 /root/auto_python/auto_selenium.py
 
 
 
-echo "0 18 * * 1-7 export DISPLAY=:0 && /usr/bin/python3 /root/auto_python/auto_selenium.py" >> /etc/crontab
+echo "0 $h * * 1-7 export DISPLAY=:0 && /usr/bin/python3 /root/auto_python/auto_selenium.py" >> /etc/crontab
 
 systemctl restart crond
 systemctl enable crond
