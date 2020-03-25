@@ -6,12 +6,8 @@ yum install figlet -y -q
 figlet -ck "made    by    Eric"
 sleep 1
 
-read -p "Please input your account: " account
-
-figlet -ck "made    by    Eric"
-clear
-read -p "Please input your password: " password
-clear
+read -p "Please input your account: " -s account
+read -p "Please input your password: " -s password
 
 
 sudo yum install python36 -y
