@@ -25,7 +25,7 @@ echo ${password} > /root/file2
 chmod 777 /root/file1
 chmod 777 /root/file2
 
-echo "0 18 * * 1-5 export DISPLAY=:0 && /usr/bin/python3 /root/auto_selenium.py" >> /etc/crontab
+echo "0 18 * * 1-7 export DISPLAY=:0 && /usr/bin/python3 /root/auto_selenium.py" >> /etc/crontab
 
 systemctl restart crond
 systemctl enable crond
