@@ -1,6 +1,6 @@
 #!/bin/bash
 
-su root
+rm -rf /root/auto_kx/chromedriver_linux64.zip 
 mkdir /root/auto_python
 
 echo -e "install start..."
