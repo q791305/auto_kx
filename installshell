@@ -1,4 +1,9 @@
 #!/bin/bash
+
+yum install figlet -y -q
+figlet -ck "made    by    Eric"
+sleep 1
+
 read -p "Please input your account: " account
 read -p "Please input your password: " password
 
