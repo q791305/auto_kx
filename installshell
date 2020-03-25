@@ -67,7 +67,6 @@ INPUTEDPWD=''
 
 # 若密碼不爲空，說明密碼獲取成功，否則爲失敗
 if [ $validpwd ]; then
-    echo "設置成功"
 else
     exit 1
 fi
