@@ -7,9 +7,11 @@ figlet -ck "made    by    Eric"
 sleep 1
 
 read -p "Please input your account: " account
+
+figlet -ck "made    by    Eric"
+clear
 read -p "Please input your password: " password
-
-
+clear
 
 
 sudo yum install python36 -y
