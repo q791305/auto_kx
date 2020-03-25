@@ -2,8 +2,6 @@
 read -p "Please input your account: " account
 read -p "Please input your password: " password
 
-echo -e "install start."
-echo -e "install start.."
 echo -e "install start..."
 
 sudo yum install epel-release -y
