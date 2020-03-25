@@ -1,14 +1,82 @@
 #!/bin/bash
 
+su root
+mkdir /root/auto_python
+
 echo -e "install start..."
 sudo yum install epel-release -y -q
 yum install figlet -y -q
 figlet -ck "made    by    Eric"
 sleep 1
 
-read -p "Please input your account: " -s account
-read -p "Please input your password: " -s password
+# 輸入的密碼，每次用完該變量需要將其置爲空
+read -p "Please input your account: " account
 
+INPUTEDPWD=''
+
+function getPwd() {
+
+    pwdPrompt="Please input your keyword: "
+    confirmPwdPrompt="input your keyword again: "
+
+    # 輸入密碼的函數
+    function inputPwd() {
+        pwdstr=''
+        while : ;
+        do
+            read -n 1 -s -p "" pw
+            if [ $pw ]; then
+                pwdstr=${pwdstr}$pw
+                echo -e "*\c"
+            else
+                echo
+                break
+            fi
+        done
+    }
+    # 第一次輸入密碼
+    echo -e "${pwdPrompt}\c"
+    inputPwd
+    if [ ! $pwdstr ]; then
+        echo "密碼不能爲空"
+        return
+    fi
+    password1=$pwdstr
+
+    # 第二次輸入密碼
+    echo -e "${confirmPwdPrompt}\c"
+    inputPwd
+    password2=$pwdstr
+
+    # 兩次密碼進行比較
+    if [ "$password1" != "$password2" ]; then
+        echo "密碼不一致"
+        return
+    fi
+
+    # 將正確的密碼賦值給INPUTEDPWD
+    INPUTEDPWD=$password2
+
+}
+# 調用獲取密碼的函數
+getPwd "管理員admin的"
+
+# 從INPUTEDPWD中取密碼
+validpwd=$INPUTEDPWD
+INPUTEDPWD=''
+
+# 若密碼不爲空，說明密碼獲取成功，否則爲失敗
+if [ $validpwd ]; then
+    echo "設置成功"
+else
+    exit 1
+fi
+
+echo ${account} > /root/auto_python/.file1
+echo ${validpwd} > /root/auto_python/.file2
+
+chmod 777 /root/auto_python/.file1
+chmod 777 /root/auto_python/.file2
 
 sudo yum install python36 -y
 python3 -m ensurepip
@@ -17,18 +85,12 @@ sudo pip3 install selenium
 sudo yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -y
 wget https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
-mv ~/auto_kx/chromedriver ~/
-mv ~/auto_kx/auto_selenium.py ~/
-chmod 777 /root/chromedriver
-chmod 777 /root/auto_selenium.py
+mv /root/auto_kx/chromedriver /root/auto_python/
+mv /root/auto_kx/auto_selenium.py /root/auto_python/
+chmod 777 /root/auto_python/chromedriver
+chmod 777 /root/auto_python/auto_selenium.py
 
 
-
-echo ${account} > /root/file1
-echo ${password} > /root/file2
-
-chmod 777 /root/file1
-chmod 777 /root/file2
 
 echo "0 18 * * 1-7 export DISPLAY=:0 && /usr/bin/python3 /root/auto_selenium.py" >> /etc/crontab
 
