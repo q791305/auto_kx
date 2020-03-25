@@ -1,0 +1,31 @@
+#!/bin/bash
+read -p "Please input your account: " account
+read -p "Please input your password: " password
+
+sudo yum install epel-release -y
+sudo yum install python36 -y
+python3 -m ensurepip
+sudo pip3 install --upgrade pip
+sudo pip3 install selenium
+sudo yum install https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm -y
+wget https://chromedriver.storage.googleapis.com/80.0.3987.106/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+git clone https://github.com/q791305/auto_kx.git
+mv ~/auto_kx/auto_selenium.py ~/
+chmod 777 chromedriver
+chmod 777 auto_selenium.py
+
+
+
+echo ${account} > /root/file1
+echo ${password} > /root/file2
+
+chmod 777 /root/file1
+chmod 777 /root/file2
+
+echo "0 18 * * 1-5 export DISPLAY=:0 && /usr/bin/python3 /root/auto_selenium.py" >> /etc/crontab
+
+systemctl restart crond
+systemctl enable crond
+
+echo -e "complete"
