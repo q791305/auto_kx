@@ -106,7 +106,7 @@ chmod 777 /root/auto_python/auto_selenium.py
 
 
 
-echo "0 $h * * 1-7 export DISPLAY=:0 && /usr/bin/python3 /root/auto_python/auto_selenium.py" >> /etc/crontab
+echo "0 $h * * 1-7 root export DISPLAY=:0 && /usr/bin/python3 /root/auto_python/auto_selenium.py" >> /etc/crontab
 
 systemctl restart crond
 systemctl enable crond
