@@ -89,6 +89,9 @@ else
     exit 1
 fi
 
+read -p "Please input smtp(如果不需要失敗發信通知可不填寫): " mail
+echo ${mail} > /root/auto_python/file3
+
 sudo yum install python36 -y
 python3 -m ensurepip
 sudo pip3 install --upgrade pip
