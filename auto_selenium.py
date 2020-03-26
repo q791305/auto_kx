@@ -26,8 +26,8 @@ try:
   driver.close()  #關閉網頁
 
 except:
-  os.system('echo "打卡處理失敗" | mailx -r "admin@python_auto" -S smtp="{0}" -s "mail_title" {1}@kx.com.tw'.format(mail,account))
+  os.system('echo "打卡處理失敗" | mailx -r "python_auto@admin" -S smtp="{0}" -s "mail_title" {1}@kx.com.tw'.format(mail,account))
   
 else:
-  os.system('echo "打卡成功" | mailx -r "admin@python_auto" -S smtp="{0}" -s "mail_title" {1}@kx.com.tw'.format(mail,account))
+  os.system('echo "打卡成功" | mailx -r "[error]python_auto@admin" -S smtp="{0}" -s "mail_title" {1}@kx.com.tw'.format(mail,account))
   
