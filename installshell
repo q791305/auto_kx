@@ -79,7 +79,7 @@ echo ${validpwd} > /root/auto_python/.file2
 chmod 777 /root/auto_python/.file1
 chmod 777 /root/auto_python/.file2
 
-read -p "每天幾點打卡(0-23): " h
+read -p "每天幾點修復打卡紀錄(0-23): " h
 if [ ! $h ]; then
     echo "時間不可為空"
     exit 1
