@@ -20,7 +20,11 @@ try:
 
     driver.get("https://eip.kx.com.tw/KxEIP/Modules/Personal/PersonalWorkLog")
     driver.find_element_by_class_name("btnBatchFix").click()
-
+    
+    time.sleep(3)
+    
+    driver.find_element_by_xpath('//*[@title="移至上個月"]').click()
+    driver.find_element_by_class_name("btnBatchFix").click()
 
     time.sleep(3)  #停止3秒
     driver.close()  #關閉網頁
