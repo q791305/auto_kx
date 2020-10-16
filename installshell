@@ -93,6 +93,9 @@ fi
 read -p "Please input smtp(如果不需要失敗發信通知可不填寫): " mail
 echo ${mail} > /root/auto_python/file3
 
+sudo yum install mailx -y
+sudo yum install unzip -y
+
 sudo yum install python36 -y
 python3 -m ensurepip
 sudo pip3 install --upgrade pip
@@ -111,5 +114,8 @@ echo "0 $h * * * root export DISPLAY=:0 && /usr/bin/python3 /root/auto_python/au
 
 systemctl restart crond
 systemctl enable crond
+
+echo -e "testing"
+python3 /root/auto_python/auto_selenium.py
 
 figlet -k "complete"
