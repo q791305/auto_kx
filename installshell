@@ -115,7 +115,10 @@ echo "0 $h * * * root export DISPLAY=:0 && /usr/bin/python3 /root/auto_python/au
 systemctl restart crond
 systemctl enable crond
 
-echo -e "testing"
+echo -e "           "
+echo -e "testing...."
+echo -e "           "
+
 python3 /root/auto_python/auto_selenium.py
 
 figlet -k "complete"
